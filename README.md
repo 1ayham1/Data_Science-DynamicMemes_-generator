@@ -1,10 +1,10 @@
 # Data_Science-DynamicMemes_-generator
 
+A multimedia application to dynamically generate images with quotes.
 
-* [main project site](https://github.com/udacity/nd303-c1-advanced-python-techniques-project-starter)
+* [main project site]
 * [udacity nanodegrees](https://www.udacity.com/)
 
-A multimedia application to dynamically generate images with quotes.
 
 ## General Overview
 
