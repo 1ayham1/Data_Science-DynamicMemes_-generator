@@ -30,7 +30,7 @@ class DocxImporter(IngestorInterface):
 
         for paragraph in doc.parapraphs:
 
-            if paragraph.text !="":
+            if paragraph.text != "":
                 parse = paragraph.text.split('-')
                 new_quote = QuoteModel(parse[0], parse[1])
                 quote_list.append(new_quote)
