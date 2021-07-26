@@ -8,32 +8,6 @@ import MemeEngine
 
 from QuoteEngine import QuoteModel, Ingestor
 
-def default_parameters():
-    """Generate default values for a meme given an path and a quote """
-
-    images = "../_data/photos/dog/"
-    imgs = []
-    for root, dirs, files in os.walk(images):
-        imgs = [os.path.join(root, name) for name in files]
-
-    img = random.choice(imgs)
-
-    quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
-                    './_data/DogQuotes/DogQuotesDOCX.docx',
-                    './_data/DogQuotes/DogQuotesPDF.pdf',
-                    './_data/DogQuotes/DogQuotesCSV.csv']
-    
-    quotes = []
-    for f in quote_files:
-        quotes.extend(Ingestor.parse(f))
-    
-    quote = random.choice(quotes)
-    
-    meme = MemeEngine('./tmp')
-    path = meme.make_meme(img, quote.body, quote.author)
-    
-    return path
-
 
 def generate_meme(path=None, body=None, author=None):
     """ Generate a meme given an path and a quote """
