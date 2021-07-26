@@ -9,6 +9,7 @@ from typing import List
 from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
 
+
 class PDFImporter(IngestorInterface):
     """Implement parse() to read .pdf files by calling an installed
     system program xpdf that converts pdf file to .txt file. It then
@@ -33,17 +34,17 @@ class PDFImporter(IngestorInterface):
         call = subprocess.call(['pdftotext', path, tmp])
 
         quote_list = []
-        
+
         with open(tmp, 'r') as file_ref:
 
             for line in file_ref.readlines():
                 line = line.strip('\n\r').strip()
-                
+
                 if len(line) > 0:
                     parsed = line.split('-')
-                    new_quote = QuoteModel(parsed[0],parsed[1])
+                    new_quote = QuoteModel(parsed[0], parsed[1])
                     quote_list.append(new_quote)
-        
+
         os.remove(tmp)
 
         return quote_list
