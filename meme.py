@@ -1,7 +1,38 @@
+""" dddd """
+
 import os
 import random
+import argparse
 
-# @TODO Import your Ingestor and MemeEngine classes
+import MemeEngine
+
+from QuoteEngine import QuoteModel, Ingestor
+
+def default_parameters():
+    """Generate default values for a meme given an path and a quote """
+
+    images = "../_data/photos/dog/"
+    imgs = []
+    for root, dirs, files in os.walk(images):
+        imgs = [os.path.join(root, name) for name in files]
+
+    img = random.choice(imgs)
+
+    quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
+                    './_data/DogQuotes/DogQuotesDOCX.docx',
+                    './_data/DogQuotes/DogQuotesPDF.pdf',
+                    './_data/DogQuotes/DogQuotesCSV.csv']
+    
+    quotes = []
+    for f in quote_files:
+        quotes.extend(Ingestor.parse(f))
+    
+    quote = random.choice(quotes)
+    
+    meme = MemeEngine('./tmp')
+    path = meme.make_meme(img, quote.body, quote.author)
+    
+    return path
 
 
 def generate_meme(path=None, body=None, author=None):
@@ -40,9 +71,25 @@ def generate_meme(path=None, body=None, author=None):
 
 
 if __name__ == "__main__":
-    # @TODO Use ArgumentParser to parse the following CLI arguments
-    # path - path to an image file
-    # body - quote body to add to the image
-    # author - quote author to add to the image
-    args = None
-    print(generate_meme(args.path, args.body, args.author))
+    """parse the following CLI arguments
+    
+    -path - path to an image file
+    -body - quote body to add to the image
+    -author - quote author to add to the image """
+    
+    parser = argparse.ArgumentParser(description="please provide the path")
+    parser.add_argument(
+        '--path', type=str, default=None, help="path to desired image")
+    parser.add_argument(
+        '--body', type=str, default=None, help="quote to be added")
+    parser.add_argument(
+        '--author', type=str, default=None, help="quote author")
+
+    args = parser.parse_args()
+    path = args.path
+    body = args.body
+    author = args.author
+    
+    print(f'The following path: {path} by\n{author} and he wrote\n {body}')
+
+    #print(generate_meme(args.path, args.body, args.author))
