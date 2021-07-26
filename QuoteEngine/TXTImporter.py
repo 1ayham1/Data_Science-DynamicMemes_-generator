@@ -7,7 +7,7 @@ from .QuoteModel import QuoteModel
 
 
 class TXTImporter(IngestorInterface):
-    """Implement parse() to read .txt files and 
+    """Implement parse() to read .txt files and
     a composition to QuoteModel class that defines the used pattern"""
 
     allowed_extensions = ['txt']
