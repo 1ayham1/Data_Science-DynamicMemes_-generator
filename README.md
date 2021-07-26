@@ -12,3 +12,4 @@ A multimedia application to dynamically generate images with quotes.
 - it loads, manipulates, and saves images.
 - it accepts dynamic user input through a command-line tool and a web service. 
 
+![link](https://upload.wikimedia.org/wikipedia/commons/4/45/W3sDesign_Strategy_Design_Pattern_UML.jpg)
