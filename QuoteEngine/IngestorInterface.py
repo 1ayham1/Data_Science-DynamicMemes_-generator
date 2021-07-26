@@ -35,5 +35,5 @@ class IngestorInterface(ABC):
 
     @classmethod
     @abstractmethod
-    def parse(cls, path: str) -> List(QuoteModel):
+    def parse(cls, path: str) -> List[QuoteModel]:
         pass
