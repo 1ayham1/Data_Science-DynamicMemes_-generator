@@ -23,7 +23,7 @@ class IngestorInterface(ABC):
     allowed_extensions = []
 
     @classmethod
-    def can_ingest(cls, path):
+    def can_ingest(cls, path: str) -> bool:
         """extract file extension from a path
 
         :path (str)    : system path to file of interest
