@@ -1,11 +1,10 @@
-""" dddd """
+"""main program for running CLI interface with optional arguments"""
 
 import os
 import random
 import argparse
 
-import MemeEngine
-
+from MemeEngine import MemeEngine
 from QuoteEngine import QuoteModel, Ingestor
 
 
@@ -46,11 +45,11 @@ def generate_meme(path=None, body=None, author=None):
 
 if __name__ == "__main__":
     """parse the following CLI arguments
-    
+
     -path - path to an image file
     -body - quote body to add to the image
     -author - quote author to add to the image """
-    
+
     parser = argparse.ArgumentParser(description="please provide the path")
     parser.add_argument(
         '--path', type=str, default=None, help="path to desired image")
@@ -63,7 +62,7 @@ if __name__ == "__main__":
     path = args.path
     body = args.body
     author = args.author
-    
-    print(f'The following path: {path} by\n{author} and he wrote\n {body}')
 
-    #print(generate_meme(args.path, args.body, args.author))
+    print(f'Using image path: {path} by\n{author} and she/he wrote\n {body}')
+
+    print(generate_meme(args.path, args.body, args.author))
