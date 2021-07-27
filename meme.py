@@ -21,7 +21,7 @@ def generate_meme(path=None, body=None, author=None):
 
         img = random.choice(imgs)
     else:
-        img = path[0]
+        img = path
 
     if body is None:
         quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
@@ -36,10 +36,12 @@ def generate_meme(path=None, body=None, author=None):
     else:
         if author is None:
             raise Exception('Author Required if Body is Used')
+
         quote = QuoteModel(body, author)
 
     meme = MemeEngine('./tmp')
     path = meme.make_meme(img, quote.body, quote.author)
+
     return path
 
 
@@ -59,10 +61,5 @@ if __name__ == "__main__":
         '--author', type=str, default=None, help="quote author")
 
     args = parser.parse_args()
-    path = args.path
-    body = args.body
-    author = args.author
-
-    print(f'Using image path: {path} by\n{author} and she/he wrote\n {body}')
 
     print(generate_meme(args.path, args.body, args.author))
