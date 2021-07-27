@@ -1,2 +1,2 @@
 
-from .MemeGenerator import MemeGenerator
+from .MemeGenerator import MemeEngine
