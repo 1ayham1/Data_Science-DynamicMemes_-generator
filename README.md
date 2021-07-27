@@ -1,20 +1,21 @@
-# Data_Science-DynamicMemes_-generator
+# Memes Generator
 
-A multimedia application to dynamically generate images with quotes.
+A multimedia application to dynamically generate quotes for supplied images. Accessed through CLI and a web interface (flask)
 
-* [main project site]
 * [udacity nanodegrees](https://www.udacity.com/)
+* [main program site](https://www.udacity.com/course/intermediate-python-nanodegree--nd303)
 
 
 ## General Overview
 
-- The application interacts with a variety of complex filetypes. (PDF, Word Documents, CSVs, Text files).
-- it loads, manipulates, and saves images.
-- it accepts dynamic user input through a command-line tool and a web service. 
-
+- The application interacts with a variety of complex filetypes. (PDF, Word Documents, CSVs, Text files). It implements a Strategy Pattern to offer flexibility of adding/editing new file types.
 ![link](https://upload.wikimedia.org/wikipedia/commons/3/39/Strategy_Pattern_in_UML.png)
-
+- it loads, manipulates, and saves images.
+- it integrates extracted text from the files with the images
+- it accepts dynamic user input through a command-line tool and a web service. 
 ## Project Scaffolding
+
+The project is structured in two main modules **`MemeEngine`** and **`QuoteEngine`** and two main invoking programs `api.py` and `meme.py` to support web & CLI interfaces, respectively.  
 
 ```
 .
@@ -64,12 +65,35 @@ A multimedia application to dynamically generate images with quotes.
 
 ```
 
-## requirements and running the program
--docx
--pandas
--[xpdf reader](https://www.xpdfreader.com/download.html) 
--flask
--pdftotext
--requests
+## Dependencies
+**file types support** 
+- Python-docx
+- pdftotext
+- Pandas
+- Subprocess
 
-## Usage
+**Web Interface** 
+- flask
+- requests
+
+**Command Line Interface**
+- Argparse
+- os
+
+**OOP and others**
+- ABC
+- Typing
+- Pillow
+##  Running the program
+
+If optional arguments are not provided, the proram uses default values under `_data` folder and a random choice of file format. 
+
+**Command Line Interface**
+run python `meme.py` with optional arguments
+- `--path`  : input path the image
+- `--body`  : quote you would like to add
+- `--author`: author of the comment/quote
+
+**Flask Web Interface**
+- run python `api.py` from the directory where the file is located
+- Simple web interface from `templates` folder is then accessed on port 5000 from localhost. http://127.0.0.1:5000
