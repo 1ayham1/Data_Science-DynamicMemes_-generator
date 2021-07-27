@@ -18,31 +18,30 @@ A multimedia application to dynamically generate images with quotes.
 
 ```
 .
-│   app.py
-│   meme.py
-│   README.md      # This file.
+│   app.py                              # runs flask api
+│   meme.py                             # runs modules from CMI
+│   README.md                           # This file.
 │
-├───MemeEngine
-│       MemeGenerator.py
+├───MemeEngine                          
+│       MemeGenerator.py                # processes images and add text
 │       __init__.py
 │
 ├───QuoteEngine
-│       CSVImporter.py
-│       DocxImporter.py
-│       Ingestor.py
+│       CSVImporter.py                  # strategy: .csv reader
+│       DocxImporter.py                 # strategy: .docx reader
+│       Ingestor.py                     
 │       IngestorInterface.py
-│       PDFImporter.py
+│       PDFImporter.py                  # strategy: .pdf reader
 │       QuoteModel.py
-│       TXTImporter.py
+│       TXTImporter.py                  # strategy: .txt reader
 │       __init__.py
 │
-├───templates
+├───templates                           # used for basic testing of web api.
 │       base.html
 │       meme.html
 │       meme_form.html
 │
-├───tmp
-└───_data
+└───_data                               # sample images and quotes in different file formats
     ├───DogQuotes
     │   │   DogQuotesCSV.csv
     │   │   DogQuotesDOCX.docx
