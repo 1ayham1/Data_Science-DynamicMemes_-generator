@@ -28,7 +28,7 @@ class DocxImporter(IngestorInterface):
         quote_list = []
         doc = docx.Document(path)
 
-        for paragraph in doc.parapraphs:
+        for paragraph in doc.paragraphs:
 
             if paragraph.text != "":
                 parse = paragraph.text.split('-')
