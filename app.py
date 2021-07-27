@@ -1,3 +1,4 @@
+"""main program for runnin web interface via flask"""
 import random
 import os
 import requests
@@ -19,7 +20,6 @@ def setup():
                    './_data/DogQuotes/DogQuotesPDF.pdf',
                    './_data/DogQuotes/DogQuotesCSV.csv']
 
-
     quotes = []
     for f in quote_files:
         quotes.extend(Ingestor.parse(f))
@@ -34,6 +34,7 @@ def setup():
 
 
 quotes, imgs = setup()
+
 
 @app.route('/')
 def meme_rand():
@@ -54,30 +55,31 @@ def meme_form():
 
 @app.route('/create', methods=['POST'])
 def meme_post():
-    """ Create a user defined meme 
-    
+    """ Create a user defined meme
+
     Help was obtained from knowledge Area
     """
-    
-    #Use requests to save the image from the image_url
+
+    # Use requests to save the image from the image_url
     image_url = request.form['image_url']
     quote = request.form['quote', ""]
     author = request.form['author', ""]
     img_request = requests.get(image_url, allow_redirects=True)
 
-    #form param to a temp local file.
+    # form param to a temp local file.
     tmp = f'./temp/{random.randint(0, 1000000)}.jpg'
 
     with open(tmp, 'wb') as img_file:
         img_file.write(img_request.content)
 
-    #generate a meme using this temp file.
+    # generate a meme using this temp file.
     path = meme.make_meme(tmp, quote, author)
-    
-    #Remove the temporary saved image.
+
+    # Remove the temporary saved image.
     os.remove(tmp)
 
     return render_template('meme.html', path=path)
+
 
 if __name__ == "__main__":
     app.run()
