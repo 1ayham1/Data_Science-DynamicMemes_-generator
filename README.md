@@ -18,26 +18,59 @@ A multimedia application to dynamically generate images with quotes.
 
 ```
 .
-├── README.md       # This file.
-├── main.py
-├── models.py       
-├── read.py         
-├── database.py     
-├── filters.py      
-├── write.py        
-├── helpers.py
-├── data
-│   ├── neos.csv
-│   └── cad.json
-└── tests
-    ├── test-neos-2020.csv
-    ├── test-cad-2020.json
-    ├── test_*.py
-    ├── ...
-    └── test_*.py
+│   app.py
+│   meme.py
+│   README.md      # This file.
+│
+├───MemeEngine
+│       MemeGenerator.py
+│       __init__.py
+│
+├───QuoteEngine
+│       CSVImporter.py
+│       DocxImporter.py
+│       Ingestor.py
+│       IngestorInterface.py
+│       PDFImporter.py
+│       QuoteModel.py
+│       TXTImporter.py
+│       __init__.py
+│
+├───templates
+│       base.html
+│       meme.html
+│       meme_form.html
+│
+├───tmp
+└───_data
+    ├───DogQuotes
+    │   │   DogQuotesCSV.csv
+    │   │   DogQuotesDOCX.docx
+    │   │   DogQuotesPDF.pdf
+    │   │   DogQuotesTXT.txt
+    │   │
+    │   └───tmp
+    ├───photos
+    │   └───dog
+    │           xander_1.jpg
+    │           xander_2.jpg
+    │           xander_3.jpg
+    │           xander_4.jpg
+    │
+    └───SimpleLines
+            SimpleLines.csv
+            SimpleLines.docx
+            SimpleLines.pdf
+            SimpleLines.txt
+
 ```
 
-## requirements
+## requirements and running the program
 -docx
 -pandas
 -[xpdf reader](https://www.xpdfreader.com/download.html) 
+-flask
+-pdftotext
+-requests
+
+## Usage
