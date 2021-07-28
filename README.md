@@ -66,6 +66,8 @@ The project is structured in two main modules **`MemeEngine`** and **`QuoteEngin
 ```
 
 ## Dependencies
+for a complete list check requirements.txt
+
 **file types support** 
 - Python-docx
 - pdftotext
