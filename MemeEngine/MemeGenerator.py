@@ -6,16 +6,15 @@ import os
 from PIL import Image, ImageFont, ImageDraw
 
 
-
 class MemeEngine:
     """Read, Process, Add Quote and Save output image"""
 
     def __init__(self, output_dir):
         """saving resulting image"""
-        
+
         if not os.path.isdir(output_dir):
             os.makedirs(output_dir)
-        
+
         self.output_dir = output_dir
 
     def make_meme(self, img_path, text, author, width=500) -> str:
