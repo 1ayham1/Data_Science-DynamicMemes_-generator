@@ -44,8 +44,9 @@ def meme_rand():
     img = random.choice(imgs)
     quote = random.choice(quotes)
 
-    path = meme.make_meme(img, quote.author, quote.author)
-    return render_template('meme.html', path=path)
+    out_path = meme.make_meme(img, quote.body, quote.author)
+    # return render_template('meme.html', path=out_path)
+    return render_template('meme.html', path=os.path.relpath(out_path))
 
 
 @app.route('/create', methods=['GET'])
@@ -61,20 +62,22 @@ def meme_post():
     Help was obtained from knowledge Area
     """
 
-    # Use requests to save the image from the image_url
     image_url = request.form['image_url']
-    quote = request.form['quote', ""]
-    author = request.form['author', ""]
     img_request = requests.get(image_url, allow_redirects=True)
 
+    body = request.form['body']
+    author = request.form['author']
+
     # form param to a temp local file.
-    tmp = f'./temp/{random.randint(0, 1000000)}.jpg'
+    tmp = f'./static/{random.randint(0, 1000000)}.jpg'
 
     with open(tmp, 'wb') as img_file:
+
+        print("are you even executing this")
         img_file.write(img_request.content)
 
     # generate a meme using this temp file.
-    path = meme.make_meme(tmp, quote, author)
+    path = meme.make_meme(tmp, body, author)
 
     # Remove the temporary saved image.
     os.remove(tmp)
