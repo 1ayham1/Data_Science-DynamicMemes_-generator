@@ -45,7 +45,7 @@ def meme_rand():
     quote = random.choice(quotes)
 
     out_path = meme.make_meme(img, quote.body, quote.author)
-    # return render_template('meme.html', path=out_path)
+    #return render_template('meme.html', path=out_path)
     return render_template('meme.html', path=os.path.relpath(out_path))
 
 
@@ -61,19 +61,19 @@ def meme_post():
 
     Help was obtained from knowledge Area
     """
-
+    
     image_url = request.form['image_url']
     img_request = requests.get(image_url, allow_redirects=True)
-
+    
     body = request.form['body']
     author = request.form['author']
+    
 
     # form param to a temp local file.
     tmp = f'./static/{random.randint(0, 1000000)}.jpg'
 
     with open(tmp, 'wb') as img_file:
 
-        print("are you even executing this")
         img_file.write(img_request.content)
 
     # generate a meme using this temp file.
@@ -87,3 +87,5 @@ def meme_post():
 
 if __name__ == "__main__":
     app.run()
+
+
